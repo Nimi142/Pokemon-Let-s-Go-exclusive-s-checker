@@ -1,7 +1,7 @@
 from tkinter import *
-from tkinter import font
-import tkinter as tk
+
 from PIL import Image, ImageTk
+
 imageSize = 100
 build = "v1.1.0"
 main = Tk()
@@ -96,10 +96,6 @@ def changebynumber(event=None):
         print("ERROR: COULD NOT FIND POKEMON IMAGE")
     changePokemon(aNames[int(Enum.get()) - 1],pPoke)
 
-# def resize(event):
-#     self = event.widget()
-#     self.font = font.Font(size = self.get_height())
-#
 
 def changePokemon(pokeName,pPoke = None):
     global aNames
@@ -140,5 +136,4 @@ lBuild.grid(row = 8,column = 0)
 lError.grid(row = 8,column = 1)
 Ename.bind("<Return>", changebyname)
 Enum.bind("<Return>", changebynumber)
-# main.bind("<Configure>", resize)
 main.mainloop()
