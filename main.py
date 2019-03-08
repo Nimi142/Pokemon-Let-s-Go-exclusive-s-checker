@@ -3,7 +3,7 @@ from tkinter import *
 from PIL import Image, ImageTk
 
 imageSize = 100
-build = "v1.1.0"
+build = "v1.1.1"
 main = Tk()
 pYesEevee = ImageTk.PhotoImage(
     Image.open("res/gamePhotos/YesEevee.png").resize((imageSize, imageSize), Image.ANTIALIAS))
