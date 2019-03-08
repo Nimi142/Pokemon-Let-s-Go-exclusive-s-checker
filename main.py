@@ -1,11 +1,12 @@
 from tkinter import *
 from PIL import Image, ImageTk
+imageSize = 100
 
 main = Tk()
-pYesEevee = ImageTk.PhotoImage(Image.open("res/gamePhotos/YesEevee.png").resize((50, 50), Image.ANTIALIAS))
-pNoEevee = ImageTk.PhotoImage(Image.open("res/gamePhotos/NoEevee.png").resize((50, 50), Image.ANTIALIAS))
-pYesPickachu = ImageTk.PhotoImage(Image.open("res/gamePhotos/YesPikachu.png").resize((50, 50), Image.ANTIALIAS))
-pNoPickachu = ImageTk.PhotoImage(Image.open("res/gamePhotos/NoPikachu.png").resize((50, 50), Image.ANTIALIAS))
+pYesEevee = ImageTk.PhotoImage(Image.open("res/gamePhotos/YesEevee.png").resize((imageSize, imageSize), Image.ANTIALIAS))
+pNoEevee = ImageTk.PhotoImage(Image.open("res/gamePhotos/NoEevee.png").resize((imageSize, imageSize), Image.ANTIALIAS))
+pYesPickachu = ImageTk.PhotoImage(Image.open("res/gamePhotos/YesPikachu.png").resize((imageSize, imageSize), Image.ANTIALIAS))
+pNoPickachu = ImageTk.PhotoImage(Image.open("res/gamePhotos/NoPikachu.png").resize((imageSize, imageSize), Image.ANTIALIAS))
 
 aNames = ["bulbasaur", "ivysaur", "venusaur", "charmander", "charmeleon", "charizard", "squirtle", "wartortle",
           "blastoise", "caterpie", "metapod", "butterfree", "weedle", "kakuna", "beedrill", "pidgey", "pidgeotto",
@@ -23,21 +24,28 @@ aNames = ["bulbasaur", "ivysaur", "venusaur", "charmander", "charmeleon", "chari
           "mr. mime", "scyther", "jynx", "electabuzz", "magmar", "pinsir", "tauros", "magikarp", "gyarados", "lapras",
           "ditto", "eevee", "vaporeon", "jolteon", "flareon", "porygon", "omanyte", "omastar", "kabuto", "kabutops",
           "aerodactyl", "snorlax", "articuno", "zapdos", "moltres", "dratini", "dragonair", "dragonite", "mewtwo",
-          "mew" ]
-aEevee = ['False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False',
-          'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False',
-          'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False',
-          'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False',
-          'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False',
-          'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False',
-          'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False',
-          'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False',
-          'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False',
-          'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False',
-          'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False',
-          'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False',
-          'False', 'False', 'False', 'False', 'False', 'False', 'False', 'False',
+          "mew"]
+aEevee = [True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True,
+          True, True, True, True, True, True, True, True, False, False, True, True, True, True, True, True, True, True,
+          True, True, True, True, True, True, False, False, False, True, True, True, True, True, True, True, True, True,
+          True, False, False, False, False, True, True, True, True, True, True, True, True, True, True, True, True,
+          True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, False, False,
+          True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True,
+          True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, False, True, True,
+          True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True,
+          True, True, True, True, True, True, True, True,
           ]
+aPikachu = [True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True,
+            True, True, True, True, False, False, True, True, True, True, True, True, True, True, True, True, True,
+            True, False, False, True, True, True, True, True, True, True, True, True, True, True, True, True, False,
+            False, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, False,
+            False, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True,
+            True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True,
+            True, True, True, False, False, True, True, True, True, True, True, True, True, True, True, True, True,
+            True, True, True, True, False, True, True, True, True, True, True, True, True, True, True, True, True, True,
+            True, True, True, True, True, True, True, True, True, True, True,
+            ]
+pPoke = None
 Enum = Entry(main)
 Ename = Entry(main)
 lenum = Label(main, text="Enter num: ", anchor=N)
@@ -47,30 +55,54 @@ ldesc = Label(main, text="Desc", anchor=CENTER)
 lname = Label(main, text="Name", anchor=CENTER)
 leve = Label(main, image=pNoEevee, anchor=CENTER)
 lp = Label(main, image=pNoPickachu, anchor=CENTER)
-
-
-def changePokemon(event=None):
-    global lpic
-    st = Ename.get().lower()
-    # pPoke = ImageTk.PhotoImage(Image.open("res/pokemon/" + st + ".png").resize((50, 50), Image.ANTIALIAS))
-    # lpic.configure(image=pPoke)
-    # lpic.image = pPoke
-    lpic.grid_forget()
-    lpic.grid(row=0, column=0, rowspan=4)
-    ldesc.configure(text=("Pokedex num: " + str(aNames.index(st) + 1)))
-
+def capFirstLetter(st):
+    st = list(st)
+    st[0] = st[0].upper()
+    st = "".join(st)
+    return st
 
 def changebyname(event=None):
     global lpic
-    st = aNames[int(Enum.get()) - 1]
-    # pPoke = ImageTk.PhotoImage(Image.open("res/pokemon/" + st + ".png").resize((50, 50), Image.ANTIALIAS))
-    # lpic.configure(image=pPoke)
-    # lpic.image = pPoke
-    lpic.grid_forget()
-    lpic.grid(row=0, column=0, rowspan=4)
-    lname.configure()
-    ldesc.configure(text=("Pokedex num: " + str(aNames.index(st) + 1)))
+    global pPoke
+    st = Ename.get().lower()
+    try:
+        pPoke = ImageTk.PhotoImage(Image.open("res/pokemon/" + str(aNames.index(st) + 1) + ".png").resize((imageSize, imageSize), Image.ANTIALIAS))
+    except:
+        print("ERROR: COULD NOT FIND POKEMON IMAGE")
+    print(aNames.index((st))+1)
+    changePokemon(st,pPoke)
 
+def changebynumber(event=None):
+    global lpic
+    global pPoke
+    try:
+        pPoke = ImageTk.PhotoImage(Image.open("res/pokemon/" + Enum.get() + ".png").resize((imageSize, imageSize), Image.ANTIALIAS))
+    except:
+        print("ERROR: COULD NOT FIND POKEMON IMAGE")
+    changePokemon(aNames[int(Enum.get()) - 1],pPoke)
+
+
+def changePokemon(pokeName,pPoke = None):
+    global aNames
+    global aEevee
+    global aPikachu
+    global lp
+    global leve
+    if pPoke is not None:
+        lpic.configure(image=pPoke)
+        lpic.image = pPoke
+    lname.configure(text = capFirstLetter(pokeName))
+    ldesc.configure(text=("Pokedex num: " + str(aNames.index(pokeName) + 1)))
+    inEevee = aEevee[aNames.index(pokeName)+1]
+    inPikachu = aPikachu[aNames.index(pokeName)+1]
+    if inEevee is True:
+        leve.configure(image = pYesEevee)
+    else:
+        leve.configure(image = pNoEevee)
+    if inPikachu is True:
+        lp.configure(image = pYesPickachu)
+    else:
+        lp.configure(image = pNoPickachu)
 
 
 lpic.grid(row=0, column=0, rowspan=4)
@@ -82,6 +114,6 @@ lenum.grid(row=4, column=1)
 Enum.grid(row=5, column=1)
 lename.grid(row=6, column=1)
 Ename.grid(row=7, column=1)
-Ename.bind("<Return>", changePokemon)
-Enum.bind("<Return>", changebyname)
+Ename.bind("<Return>", changebyname)
+Enum.bind("<Return>", changebynumber)
 main.mainloop()
