@@ -1,7 +1,9 @@
 from tkinter import *
+from tkinter import font
+import tkinter as tk
 from PIL import Image, ImageTk
 imageSize = 100
-
+build = "v1.1.0"
 main = Tk()
 pYesEevee = ImageTk.PhotoImage(Image.open("res/gamePhotos/YesEevee.png").resize((imageSize, imageSize), Image.ANTIALIAS))
 pNoEevee = ImageTk.PhotoImage(Image.open("res/gamePhotos/NoEevee.png").resize((imageSize, imageSize), Image.ANTIALIAS))
@@ -55,6 +57,8 @@ ldesc = Label(main, text="Desc", anchor=CENTER)
 lname = Label(main, text="Name", anchor=CENTER)
 leve = Label(main, image=pNoEevee, anchor=CENTER)
 lp = Label(main, image=pNoPickachu, anchor=CENTER)
+lBuild = Label(main,text = build)
+lError = Label(main, text = "All clear")
 def capFirstLetter(st):
     st = list(st)
     st[0] = st[0].upper()
@@ -65,22 +69,37 @@ def changebyname(event=None):
     global lpic
     global pPoke
     st = Ename.get().lower()
+    if st not in aNames:
+        lError.configure(text= "Enter a valid name")
+        return
     try:
         pPoke = ImageTk.PhotoImage(Image.open("res/pokemon/" + str(aNames.index(st) + 1) + ".png").resize((imageSize, imageSize), Image.ANTIALIAS))
     except:
         print("ERROR: COULD NOT FIND POKEMON IMAGE")
-    print(aNames.index((st))+1)
     changePokemon(st,pPoke)
 
 def changebynumber(event=None):
     global lpic
     global pPoke
+    global lError
     try:
-        pPoke = ImageTk.PhotoImage(Image.open("res/pokemon/" + Enum.get() + ".png").resize((imageSize, imageSize), Image.ANTIALIAS))
-    except:
+        num = int(Enum.get())
+    except ValueError:
+        lError.configure(text="Enter a valid number")
+        return
+    if num > 151 or num < 1:
+        lError.configure(text="Enter a number within range")
+        return
+    try:
+        pPoke = ImageTk.PhotoImage(Image.open("res/pokemon/" + str(num) + ".png").resize((imageSize, imageSize), Image.ANTIALIAS))
+    except FileNotFoundError:
         print("ERROR: COULD NOT FIND POKEMON IMAGE")
     changePokemon(aNames[int(Enum.get()) - 1],pPoke)
 
+# def resize(event):
+#     self = event.widget()
+#     self.font = font.Font(size = self.get_height())
+#
 
 def changePokemon(pokeName,pPoke = None):
     global aNames
@@ -88,6 +107,9 @@ def changePokemon(pokeName,pPoke = None):
     global aPikachu
     global lp
     global leve
+    global Ename
+    global lError
+    lError.configure(text = "All clear")
     if pPoke is not None:
         lpic.configure(image=pPoke)
         lpic.image = pPoke
@@ -114,6 +136,9 @@ lenum.grid(row=4, column=1)
 Enum.grid(row=5, column=1)
 lename.grid(row=6, column=1)
 Ename.grid(row=7, column=1)
+lBuild.grid(row = 8,column = 0)
+lError.grid(row = 8,column = 1)
 Ename.bind("<Return>", changebyname)
 Enum.bind("<Return>", changebynumber)
+# main.bind("<Configure>", resize)
 main.mainloop()
