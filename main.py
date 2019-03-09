@@ -5,6 +5,8 @@ from PIL import Image, ImageTk
 imageSize = 100
 build = "v1.1.1"
 main = Tk()
+main.iconbitmap('res/gamePhotos/logo.ico')
+main.title("Pokemon Let's go exclusice checker")
 pYesEevee = ImageTk.PhotoImage(
     Image.open("res/gamePhotos/YesEevee.png").resize((imageSize, imageSize), Image.ANTIALIAS))
 pNoEevee = ImageTk.PhotoImage(Image.open("res/gamePhotos/NoEevee.png").resize((imageSize, imageSize), Image.ANTIALIAS))
