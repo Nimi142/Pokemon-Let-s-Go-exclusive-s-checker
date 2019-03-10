@@ -1,5 +1,4 @@
 from tkinter import *
-
 from PIL import Image, ImageTk
 
 imageSize = 100
@@ -7,13 +6,10 @@ build = "v1.1.1"
 main = Tk()
 main.iconbitmap('res/gamePhotos/logo.ico')
 main.title("Pokemon Let's go exclusice checker")
-pYesEevee = ImageTk.PhotoImage(
-    Image.open("res/gamePhotos/YesEevee.png").resize((imageSize, imageSize), Image.ANTIALIAS))
+pYesEevee = ImageTk.PhotoImage(Image.open("res/gamePhotos/YesEevee.png").resize((imageSize, imageSize), Image.ANTIALIAS))
 pNoEevee = ImageTk.PhotoImage(Image.open("res/gamePhotos/NoEevee.png").resize((imageSize, imageSize), Image.ANTIALIAS))
-pYesPickachu = ImageTk.PhotoImage(
-    Image.open("res/gamePhotos/YesPikachu.png").resize((imageSize, imageSize), Image.ANTIALIAS))
-pNoPickachu = ImageTk.PhotoImage(
-    Image.open("res/gamePhotos/NoPikachu.png").resize((imageSize, imageSize), Image.ANTIALIAS))
+pYesPickachu = ImageTk.PhotoImage(Image.open("res/gamePhotos/YesPikachu.png").resize((imageSize, imageSize), Image.ANTIALIAS))
+pNoPickachu = ImageTk.PhotoImage(Image.open("res/gamePhotos/NoPikachu.png").resize((imageSize, imageSize), Image.ANTIALIAS))
 
 aNames = ["bulbasaur", "ivysaur", "venusaur", "charmander", "charmeleon", "charizard", "squirtle", "wartortle",
           "blastoise", "caterpie", "metapod", "butterfree", "weedle", "kakuna", "beedrill", "pidgey", "pidgeotto",
@@ -32,6 +28,7 @@ aNames = ["bulbasaur", "ivysaur", "venusaur", "charmander", "charmeleon", "chari
           "ditto", "eevee", "vaporeon", "jolteon", "flareon", "porygon", "omanyte", "omastar", "kabuto", "kabutops",
           "aerodactyl", "snorlax", "articuno", "zapdos", "moltres", "dratini", "dragonair", "dragonite", "mewtwo",
           "mew","meltan"]
+aPokemon = []
 aEevee = [True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True,
           True, True, True, True, False, False, True, True, True, True, True, True, True, True, True, True, True, True,
           False, False, True, True, True, True, True, True, True, True, True, True, True, True, True, False, False,
@@ -55,19 +52,40 @@ aPikachu = [True, True, True, True, True, True, True, True, True, True, True, Tr
 
             ]
 pPoke = None
+ltname = Label(main,text = "Name: ")
+ltPokNum = Label(main,text = "Pokedex number: ")
+lPokedex = Label(main,text = "Pokedex: ")
+lSearchPoke = Label(main,text= "Pokemon:")
+sPokedex = Spinbox(main, value=("Kanto","Johto"))
 Enum = Entry(main)
+fPictures = Frame(main)
 Ename = Entry(main)
+Epokemon = Entry(main)
+lpic = Label(main, text="img", anchor=CENTER)
 lenum = Label(main, text="Enter num: ", anchor=N)
 lename = Label(main, text="Enter name: ", anchor=CENTER)
-lpic = Label(main, text="img", anchor=CENTER)
 ldesc = Label(main, text="Desc", anchor=CENTER)
 lname = Label(main, text="Name", anchor=CENTER)
-leve = Label(main, image=pNoEevee, anchor=CENTER)
+leve = Label(main, image=pNoEevee, anchor= W)
 lp = Label(main, image=pNoPickachu, anchor=CENTER)
 lBuild = Label(main, text=build)
 lCopyright = Label(main, text="Author: Nimrod Rappaport \n All rights belong to Nintendo", anchor=W)
 lError = Label(main, text="All clear")
 
+def searchpoke(event = None):
+    global Epokemon
+    a = Epokemon.get()
+    if a.isdigit():
+        a = int(a)
+        p =ImageTk.PhotoImage(Image.open("res/pokemon/" + str(a) + ".png").resize((imageSize, imageSize), Image.ANTIALIAS))
+        changePokemon(aNames[a-1],p)
+    else:
+        a = str(a)
+        if a not in aNames:
+            print("")
+        num = aNames.index(a)
+        p = ImageTk.PhotoImage(Image.open("res/pokemon/"+str(num+1)+".png").resize((imageSize, imageSize), Image.ANTIALIAS))
+        changePokemon(a,p)
 
 def capFirstLetter(st):
     st = list(st)
@@ -125,7 +143,7 @@ def changePokemon(pokeName, pPoke=None):
         lpic.configure(image=pPoke)
         lpic.image = pPoke
     lname.configure(text=capFirstLetter(pokeName))
-    ldesc.configure(text=("Pokedex num: " + str(aNames.index(pokeName) + 1)))
+    ldesc.configure(text=(str(aNames.index(pokeName) + 1)))
     inEevee = aEevee[aNames.index(pokeName) ]
     inPikachu = aPikachu[aNames.index(pokeName)]
     if inEevee is True:
@@ -137,19 +155,18 @@ def changePokemon(pokeName, pPoke=None):
     else:
         lp.configure(image=pNoPickachu)
 
-
-lpic.grid(row=0, column=0, rowspan=4)
-leve.grid(row=4, column=0, rowspan=2)
-lp.grid(row=6, column=0, rowspan=2)
-lname.grid(row=0, column=1, rowspan=2)
-ldesc.grid(row=2, column=1, rowspan=2)
-lenum.grid(row=4, column=1)
-Enum.grid(row=5, column=1)
-lename.grid(row=6, column=1)
-Ename.grid(row=7, column=1)
-lBuild.grid(row=8, column=0)
-lError.grid(row=8, column=1)
-lCopyright.grid(row=9, column=0, columnspan=2)
+lSearchPoke.grid(row = 1, column = 0)
+lPokedex.grid(row = 0, column = 0)
+sPokedex.grid(row = 0,column = 1)
+Epokemon.grid(row = 1,column = 1)
+leve.grid(row = 2,column = 0)
+lp.grid(row = 2, column = 1)
+lpic.grid(row = 3,column =1, rowspan = 4)
+ltname.grid(row = 3, column = 0)
+lname.grid(row = 4,column = 0)
+ltPokNum.grid(row = 5,  column = 0)
+ldesc.grid(row = 6, column = 0)
 Ename.bind("<Return>", changebyname)
 Enum.bind("<Return>", changebynumber)
+Epokemon.bind("<Return>", searchpoke)
 main.mainloop()
