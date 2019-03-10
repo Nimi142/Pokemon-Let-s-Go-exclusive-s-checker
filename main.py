@@ -99,7 +99,7 @@ def changebynumber(event=None):
     except ValueError:
         lError.configure(text="Enter a valid number")
         return
-    if num > 151 or num < 1:
+    if num > 152 or num < 1:
         lError.configure(text="Enter a number within range")
         return
     try:
