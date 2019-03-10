@@ -40,7 +40,11 @@ aEevee = [True, True, True, True, True, True, True, True, True, True, True, True
           True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True,
           True, False, False, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True,
           True, False, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True,
+<<<<<<< HEAD
           True, True, True, True, True, True, True, True,False
+=======
+          True, True, True, True, True, True, True, True, False
+>>>>>>> b393f53138775195d961029c641a1286420a1ad3
 
           ]
 aPikachu = [True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True,
@@ -51,7 +55,11 @@ aPikachu = [True, True, True, True, True, True, True, True, True, True, True, Tr
             False, False, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True,
             True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True,
             False, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True,
+<<<<<<< HEAD
             True, True, True, True, True, True, True, True, True, True, True,False
+=======
+            True, True, True, True, True, True, True, True, True, True, True, False
+>>>>>>> b393f53138775195d961029c641a1286420a1ad3
 
             ]
 pPoke = None
@@ -126,7 +134,11 @@ def changePokemon(pokeName, pPoke=None):
         lpic.image = pPoke
     lname.configure(text=capFirstLetter(pokeName))
     ldesc.configure(text=("Pokedex num: " + str(aNames.index(pokeName) + 1)))
+<<<<<<< HEAD
     inEevee = aEevee[aNames.index(pokeName) ]
+=======
+    inEevee = aEevee[aNames.index(pokeName)]
+>>>>>>> b393f53138775195d961029c641a1286420a1ad3
     inPikachu = aPikachu[aNames.index(pokeName)]
     if inEevee is True:
         leve.configure(image=pYesEevee)
