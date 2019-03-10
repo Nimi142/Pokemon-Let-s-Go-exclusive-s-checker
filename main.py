@@ -29,7 +29,7 @@ aNames = ["bulbasaur", "ivysaur", "venusaur", "charmander", "charmeleon", "chari
           "mr. mime", "scyther", "jynx", "electabuzz", "magmar", "pinsir", "tauros", "magikarp", "gyarados", "lapras",
           "ditto", "eevee", "vaporeon", "jolteon", "flareon", "porygon", "omanyte", "omastar", "kabuto", "kabutops",
           "aerodactyl", "snorlax", "articuno", "zapdos", "moltres", "dratini", "dragonair", "dragonite", "mewtwo",
-          "mew"]
+          "mew","meltan"]
 aEevee = [True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True,
           True, True, True, True, False, False, True, True, True, True, True, True, True, True, True, True, True, True,
           False, False, True, True, True, True, True, True, True, True, True, True, True, True, True, False, False,
@@ -38,7 +38,7 @@ aEevee = [True, True, True, True, True, True, True, True, True, True, True, True
           True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True,
           True, False, False, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True,
           True, False, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True,
-          True, True, True, True, True, True, True, True,
+          True, True, True, True, True, True, True, True, False
 
           ]
 aPikachu = [True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True,
@@ -49,7 +49,7 @@ aPikachu = [True, True, True, True, True, True, True, True, True, True, True, Tr
             False, False, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True,
             True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True,
             False, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True,
-            True, True, True, True, True, True, True, True, True, True, True,
+            True, True, True, True, True, True, True, True, True, True, True, False
 
             ]
 pPoke = None
@@ -124,8 +124,8 @@ def changePokemon(pokeName, pPoke=None):
         lpic.image = pPoke
     lname.configure(text=capFirstLetter(pokeName))
     ldesc.configure(text=("Pokedex num: " + str(aNames.index(pokeName) + 1)))
-    inEevee = aEevee[aNames.index(pokeName) + 1]
-    inPikachu = aPikachu[aNames.index(pokeName) + 1]
+    inEevee = aEevee[aNames.index(pokeName)]
+    inPikachu = aPikachu[aNames.index(pokeName)]
     if inEevee is True:
         leve.configure(image=pYesEevee)
     else:
